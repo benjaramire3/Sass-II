@@ -1,0 +1,56 @@
+$light-background: #f2ece4;
+$light-text: #036;
+$dark-background: #6b717f;
+$dark-text: #d2e1dd;
+
+$light-theme: true;
+
+@mixin theme($theme: light) {
+    @if $theme == light {
+        background-color: $light-background;
+
+        p {
+            color: $light-text;
+        }
+    } @else {
+        background-color: $dark-background;
+
+        p {
+            color: $dark-text;
+        }
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 500px;
+
+    @include theme(light);
+
+    // @if $light-theme == true {
+    //     background-color: $light-background;
+
+    //     p {
+    //         color: $light-text;
+    //     }
+    // } @else {
+    //     background-color: $dark-background;
+
+    //     p {
+    //         color: $dark-text;
+    //     }
+    // }
+
+    @include media(992px) {
+        background-color: red;
+    }
+
+    @include media(552px) {
+        background-color: yellow;
+    }
+
+}
+
+.banner-2 {
+    @include theme(dark);
+}

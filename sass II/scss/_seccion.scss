@@ -1,0 +1,56 @@
+$ancho: 900px;
+
+.seccion {
+    width: $ancho;
+    margin: 0 auto;
+
+    @media (max-width: 992px) {
+        width: calc($ancho / 2 + 50px);
+    }
+
+
+    &__title {
+        color: $color-primario;
+        font-size: 30px;
+
+        &:hover {
+            color: $color-primario-alt;
+        }
+
+        &::after {
+            content: '';
+            width: 150px;
+            height: 3px;
+            background-color: $color-primario;
+            display: block;
+            margin-top: 10px;
+        }
+
+        span {
+            font-size: 40px;
+
+            @media  (max-width: 552px) {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 552px) {
+            font-size: 20px;
+
+            // span {
+            //     font-size: 24px;
+            // }
+        }
+    }
+
+    &__text {
+        color:$color-primario-alt(53, 111, 53);
+        font-size: 18px;
+    }
+
+    &__text--alt {
+        color: $color-primario-alt;
+        font-size: 15px;
+        font-family: $font-title;
+    }
+}

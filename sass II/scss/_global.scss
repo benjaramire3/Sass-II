@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: $font-text;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: $font-text;
+}
+
+li {
+    list-style: none;
+    font-family: $font-text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-title;
+}
+
+
+@for $count from 1 through 10 {
+    .f-#{$count} {
+        font-size: calc(12px + $count * 4px)!important;
+    }
+}
+
+@for $count from 1 through 5 {
+    .p-#{$count} {
+        padding: calc(8px * $count);
+    }
+}
+
+.lista {
+    @for $count from 1 through 20 {
+        li:nth-child(#{$count}) {
+            background-color: lighten(red, $count * 2.5%);
+        }
+    }
+}
+
+$sizes: 50px, 75px, 100px, 125px, 150px;
+
+.cubo {
+    background-color: bisque;
+    border: 1px solid black;
+}
+
+@each $size in $sizes {
+    .cubo-#{$size} {
+        width: $size;
+        height: $size;
+    }
+}
+
+@for $count from 1 through 6 {
+    .cubo:nth-of-type(#{$count}) {
+        background-color: darken(lightblue, $count * 10%);
+    }
+}
+
+
+.redes {
+    li {
+        color: white;
+        font-size: 20px;
+        margin: 20px 0;
+    }
+}
+
+$redes: (facebook: #3a5795, twitter: #55acee, youtube: #c32d1f);
+
+@each $clave, $valor in $redes {
+    .item-#{$clave} {
+        background-color: $valor;
+    }
+}
+
+.boton {
+    border: none;
+    background: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+}
+
+.boton-primario {
+    @extend .boton;
+    background-color: #3a5795;
+}
+
+.boton-secundario {
+    @extend .boton;
+    background-color: grey;
+}
+
+.boton-danger {
+    @extend .boton;
+    background-color: white;
+    color: #c32d1f;
+    border: 1px solid #c32d1f;
+}
+
+
+
+@mixin size($ancho: auto, $alto: auto) {
+    width: $ancho;
+    height: $alto;
+}
+
+@mixin flex($justify: flex-start, $align: center, $direction: row, $wrap: nowrap, $gap: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    gap: $gap
+}
+
+@mixin media($width) {
+    @media (max-width: $width) {
+        @content
+    }
+}
+
+.redes {
+    @include flex();
+
+    li {
+        @include size(120px, 150px);
+        @include flex(center, center);
+    }
+}
